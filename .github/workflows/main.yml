@@ -33,5 +33,5 @@ jobs:
 
       - name: Start Django server
         run: |
-          gunicorn your_project_name.wsgi:application 
+          gunicorn photoshare
 
