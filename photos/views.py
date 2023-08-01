@@ -125,12 +125,12 @@ def recognize_faces(image, save_path, encode_name, blur_mod, emojiSelect, proces
             if dist <= recognition_t:
                 name = db_name
 
-        if process == "Me":
+        if process == "Other":
             if name == 'unknown':
                 eyes_xy = (face[4], face[5]) + (face[6], face[7])
                 image = hide_face(image, pt_1, pt_2, eyes_xy, blur_mod, emojiSelect)
 
-        elif process == "Other":
+        elif process == "Me":
             if name != 'unknown':
                 eyes_xy = (face[4], face[5]) + (face[6], face[7])
                 image = hide_face(image, pt_1, pt_2, eyes_xy, blur_mod, emojiSelect)

@@ -1,0 +1,37 @@
+name: Django Deploy
+
+on:
+  push:
+    branches:
+      - main # veya ana dalın adı
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # veya başka bir işletim sistemi tercih edebilirsiniz
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11.3 # kullandığınız Python sürümüne göre değiştirin
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run migrations
+        run: |
+          python manage.py migrate
+
+      - name: Collect static files
+        run: |
+          python manage.py collectstatic --noinput
+
+      - name: Start Django server
+        run: |
+          gunicorn your_project_name.wsgi:application # Gunicorn'u kullanarak Django sunucusunu başlatın (uygun bir şekilde ayarlayın)
+
