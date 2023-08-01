@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest # veya başka bir işletim sistemi tercih edebilirsiniz
+    runs-on: ubuntu-latest 
 
     steps:
       - name: Checkout repository
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.11.3 # kullandığınız Python sürümüne göre değiştirin
+          python-version: 3.11.3 
 
       - name: Install dependencies
         run: |
@@ -33,5 +33,5 @@ jobs:
 
       - name: Start Django server
         run: |
-          gunicorn your_project_name.wsgi:application # Gunicorn'u kullanarak Django sunucusunu başlatın (uygun bir şekilde ayarlayın)
+          gunicorn your_project_name.wsgi:application 
 
